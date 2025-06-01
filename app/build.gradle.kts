@@ -60,4 +60,7 @@ dependencies {
     implementation(libs.gson)
     implementation(libs.lifecycle.viewmodel.compose)
     implementation(libs.bundles.network)
+    implementation(libs.coil)
+    implementation(libs.coil.compose)
+    implementation(libs.coil.network.okhttp)
 }

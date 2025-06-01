@@ -1,10 +1,14 @@
-package com.francis.retrofittestdemo.datalayer.network
+package com.francis.retrofittestdemo.core.data.network
 
+import com.francis.retrofittestdemo.wan_android.data.network.WanAndroidApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+/**
+ * Retrofit 单例
+ */
 object RetrofitClient {
     private const val BASE_URL = "https://www.wanandroid.com/"
 

@@ -1,18 +1,11 @@
-package com.francis.retrofittestdemo.datalayer.network
-
+package com.francis.retrofittestdemo.wan_android.data.network.dto
 
 import com.google.gson.annotations.SerializedName
 
-data class BannerData<T>(
-    @SerializedName("data")
-    val data: T ,
-    @SerializedName("errorCode")
-    val errorCode: Int,
-    @SerializedName("errorMsg")
-    val errorMsg: String
-)
-
-data class Banner(
+/**
+ * Banner请求返回的数据结构
+ */
+data class BannerDto(
     @SerializedName("desc")
     val desc: String,
     @SerializedName("id")
