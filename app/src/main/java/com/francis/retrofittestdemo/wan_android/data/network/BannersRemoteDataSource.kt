@@ -1,6 +1,5 @@
 package com.francis.retrofittestdemo.wan_android.data.network
 
-import com.francis.retrofittestdemo.core.data.network.RetrofitClient
 import com.francis.retrofittestdemo.core.domain.util.NetworkError
 import com.francis.retrofittestdemo.core.domain.util.ResponseResult
 import com.francis.retrofittestdemo.wan_android.data.network.dto.BannerDto
@@ -13,10 +12,10 @@ import kotlin.coroutines.coroutineContext
 /**
  * Banner 数据，网络获取的数据源
  */
-class BannersRemoteDataSource {
+class BannersRemoteDataSource(private val wanAndroidApi: WanAndroidApi) {
     suspend fun getBanners(): ResponseResult<List<BannerDto>, NetworkError> {
         return try {
-            ResponseResult.Success(RetrofitClient.instance.getBanner().data)
+            ResponseResult.Success(wanAndroidApi.getBanner().data)
         } catch (e: UnresolvedAddressException) {
             ResponseResult.Error(NetworkError.SERVER_ERROR)
         } catch (e: UnknownHostException) {
