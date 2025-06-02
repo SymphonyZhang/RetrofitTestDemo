@@ -5,8 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.francis.retrofittestdemo.core.domain.util.onError
 import com.francis.retrofittestdemo.core.domain.util.onSuccess
 import com.francis.retrofittestdemo.core.presentation.uitl.asUiText
-import com.francis.retrofittestdemo.wan_android.domain.WanAndroidRepository
-import com.francis.retrofittestdemo.wan_android.domain.WanAndroidRepositoryImpl
+import com.francis.retrofittestdemo.wan_android.domain.GetBannersUseCase
 import com.francis.retrofittestdemo.wan_android.presentation.models.toBannerUi
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -18,11 +17,8 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class BannerViewModel(
-    private val repository: WanAndroidRepository = WanAndroidRepositoryImpl()
+    private val getBannerUseCase: GetBannersUseCase = GetBannersUseCase() // 通过domain层的UseCase进行数据获取
 ) : ViewModel() {
-    companion object {
-        private const val TAG = "zyx"
-    }
 
     private val _bannerList = MutableStateFlow(BannerListState())
     val bannerList = _bannerList
@@ -45,7 +41,7 @@ class BannerViewModel(
             _bannerList.update {
                 it.copy(isLoading = true)
             }
-            repository
+            getBannerUseCase
                 .getBanners()
                 .onSuccess { success ->
                     _bannerList.update {

@@ -1,24 +1,25 @@
-package com.francis.retrofittestdemo.wan_android.domain
+package com.francis.retrofittestdemo.wan_android.data.network
 
 import com.francis.retrofittestdemo.core.data.network.RetrofitClient
 import com.francis.retrofittestdemo.core.domain.util.NetworkError
 import com.francis.retrofittestdemo.core.domain.util.ResponseResult
-import com.francis.retrofittestdemo.wan_android.data.mappers.toBanner
+import com.francis.retrofittestdemo.wan_android.data.network.dto.BannerDto
 import kotlinx.coroutines.ensureActive
 import kotlinx.serialization.SerializationException
+import java.net.UnknownHostException
 import java.nio.channels.UnresolvedAddressException
 import kotlin.coroutines.coroutineContext
 
 /**
- * WanAndroid Repository 仓库实现 并把请求数据封装成自定义封装类型
+ * Banner 数据，网络获取的数据源
  */
-class WanAndroidRepositoryImpl : WanAndroidRepository {
-    override suspend fun getBanners(): ResponseResult<List<Banner>, NetworkError> {
+class BannersRemoteDataSource {
+    suspend fun getBanners(): ResponseResult<List<BannerDto>, NetworkError> {
         return try {
-            ResponseResult.Success(RetrofitClient.instance.getBanner().data.map {
-                it.toBanner()
-            })
+            ResponseResult.Success(RetrofitClient.instance.getBanner().data)
         } catch (e: UnresolvedAddressException) {
+            ResponseResult.Error(NetworkError.SERVER_ERROR)
+        } catch (e: UnknownHostException) {
             ResponseResult.Error(NetworkError.NO_INTERNET)
         } catch (e: SerializationException) {
             ResponseResult.Error(NetworkError.SERIALIZATION)
