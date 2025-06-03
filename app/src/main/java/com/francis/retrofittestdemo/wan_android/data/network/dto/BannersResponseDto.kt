@@ -12,4 +12,4 @@ data class BannersResponseDto(
     val errorCode: Int,
     @SerializedName("errorMsg")
     val errorMsg: String
-)
+    )

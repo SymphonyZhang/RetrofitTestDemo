@@ -11,4 +11,5 @@ enum class NetworkError : Error {
     SERVER_ERROR,       //服务器方错误
     SERIALIZATION,      //数据解析，序列化错误
     UNKNOWN,            //未知错误
+    LOGIN_EXPIRED,      //登录过期
 }

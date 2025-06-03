@@ -15,6 +15,7 @@ fun NetworkError.asUiText(): UiText {
         NetworkError.SERVER_ERROR -> UiText.StringResource(R.string.error_unknown)
         NetworkError.SERIALIZATION -> UiText.StringResource(R.string.error_serialization)
         NetworkError.UNKNOWN -> UiText.StringResource(R.string.error_unknown)
+        NetworkError.LOGIN_EXPIRED -> UiText.StringResource(R.string.error_login_expired)
     }
 }
 
