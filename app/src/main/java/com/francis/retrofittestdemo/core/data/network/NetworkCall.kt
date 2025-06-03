@@ -9,8 +9,12 @@ import java.net.UnknownHostException
 import java.nio.channels.UnresolvedAddressException
 import kotlin.coroutines.coroutineContext
 
+/**
+ * 网络调用，错误统一处理封装
+ */
 suspend inline fun <reified T,reified R> networkCall(execute: () -> T,handleResponse:(T)->ResponseResult<R, NetworkError>): ResponseResult<R, NetworkError> {
     val response =  try {
+        // 调用
         execute()
     } catch (e: HttpException) {
         return when (e.code()) {
@@ -29,5 +33,6 @@ suspend inline fun <reified T,reified R> networkCall(execute: () -> T,handleResp
         coroutineContext.ensureActive()
         return ResponseResult.Error(NetworkError.UNKNOWN)
     }
+    // 返回结果封装
     return handleResponse(response)
 }

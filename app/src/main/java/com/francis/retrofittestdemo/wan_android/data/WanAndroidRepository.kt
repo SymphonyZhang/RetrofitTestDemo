@@ -14,5 +14,16 @@ import com.francis.retrofittestdemo.wan_android.domain.Banner
 class WanAndroidRepository(
     private val bannersRemoteDataSource: BannersRemoteDataSource = BannersRemoteDataSource(RetrofitClient.instance)
 ) {
-    suspend fun getBanners(): ResponseResult<List<Banner>, NetworkError> = bannersRemoteDataSource.getBanners().map { it.map { bannerDto -> bannerDto.toBanner() } }
+    /**
+     * 从 BannerDto 转为 Banner
+     * @return ResponseResult<List<Banner>, NetworkError>
+     */
+    suspend fun getBanners(): ResponseResult<List<Banner>, NetworkError> =
+        bannersRemoteDataSource
+            .getBanners()
+            .map {
+                it.map { bannerDto ->
+                    bannerDto.toBanner()
+                }
+            }
 }

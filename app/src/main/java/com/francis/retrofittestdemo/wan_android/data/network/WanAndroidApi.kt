@@ -7,7 +7,10 @@ import retrofit2.http.GET
  * WanAndroid接口 获取Banner列表
  */
 interface WanAndroidApi {
-    //https://www.wanandroid.com/banner/json
+    /**
+     * https://www.wanandroid.com/banner/json
+     * @return BannersResponseDto 类型
+     */
     @GET("/banner/json")
     suspend fun getBanner(): BannersResponseDto
 }

@@ -35,7 +35,6 @@ fun BannerListScreen(
             CircularProgressIndicator()
         }
     } else {
-
         LazyColumn(
             modifier = modifier.fillMaxSize(),
             verticalArrangement = Arrangement.spacedBy(8.dp)

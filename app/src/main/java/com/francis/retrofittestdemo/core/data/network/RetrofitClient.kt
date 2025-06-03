@@ -1,7 +1,6 @@
 package com.francis.retrofittestdemo.core.data.network
 
 import com.francis.retrofittestdemo.wan_android.data.network.WanAndroidApi
-import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -20,9 +19,6 @@ object RetrofitClient {
     }
 
     private val okhttpClient by lazy { OkHttpClient.Builder().addInterceptor(logger).build() }
-
-    val gson = GsonBuilder()
-        .excludeFieldsWithoutExposeAnnotation()
 
     val instance: WanAndroidApi by lazy {
         Retrofit.Builder()
