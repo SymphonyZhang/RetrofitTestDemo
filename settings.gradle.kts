@@ -21,3 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "RetrofitTestDemo"
 include(":app")
+include(":gsonSample")
