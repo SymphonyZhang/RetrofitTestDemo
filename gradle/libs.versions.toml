@@ -12,8 +12,11 @@ composeBom = "2025.05.00"
 retrofitVersion = "3.0.0"
 okhttpVersion = "4.12.0"
 gsonVersion = "2.13.1"
+moshiVersion = "1.15.2"
 
 coilVersion = "3.2.0"
+appcompat = "1.7.0"
+material = "1.12.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -38,15 +41,20 @@ retrofit2-converter-gson = { group = "com.squareup.retrofit2", name = "converter
 okhttp3 = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttpVersion" }
 okhttp3-logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttpVersion" }
 gson = { group = "com.google.code.gson", name = "gson", version.ref = "gsonVersion" }
+moshi = { group = "com.squareup.moshi", name="moshi-kotlin", version.ref = "moshiVersion"}
+moshi-adapter = {group="com.squareup.moshi",name="moshi-adapters",version.ref="moshiVersion"}
 
 coil = { group = "io.coil-kt.coil3", name = "coil", version.ref = "coilVersion" }
 coil-compose = { group = "io.coil-kt.coil3", name = "coil-compose", version.ref = "coilVersion" }
 coil-network-okhttp={group="io.coil-kt.coil3", name ="coil-network-okhttp", version.ref = "coilVersion"}
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+android-library = { id = "com.android.library", version.ref = "agp" }
 
 [bundles]
 network = [
