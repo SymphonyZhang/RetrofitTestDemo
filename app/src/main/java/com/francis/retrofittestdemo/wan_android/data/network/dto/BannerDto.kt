@@ -1,25 +1,27 @@
 package com.francis.retrofittestdemo.wan_android.data.network.dto
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
 /**
  * Banner请求返回的数据结构
  */
+@JsonClass(generateAdapter = true)
 data class BannerDto(
-    @SerializedName("desc")
+    @Json(name = "desc")
     val desc: String,
-    @SerializedName("id")
+    @Json(name = "id")
     val id: Int,
-    @SerializedName("imagePath")
+    @Json(name = "imagePath")
     val imagePath: String,
-    @SerializedName("isVisible")
+    @Json(name = "isVisible")
     val isVisible: Int,
-    @SerializedName("order")
+    @Json(name = "order")
     val order: Int,
-    @SerializedName("title")
+    @Json(name = "title")
     val title: String,
-    @SerializedName("type")
+    @Json(name = "type")
     val type: Int,
-    @SerializedName("url")
+    @Json(name = "url")
     val url: String
 )
